@@ -72,17 +72,24 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'CollegeERP.wsgi.application'
+import pymysql
+pymysql.version_info=(1,4,6,'final',0)
+pymysql.install_as_MySQLdb()
 
-
-# Database
-# https://docs.djangoproject.com/en/2.1/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+os.getenv('GAE_APPLICATION',None)
+DATABASE ={
+    'default':{
+        'ENGINE': 'django.db.backends.sqllite3',
+        'HOST':'/cloudsql/ ninth-nebula-288316:us-central1:project',
+        'USER':'abhi',
+        'PASSWORD':os.environ.get('abhi8858'),
+        'NAME':'erpsystem',
+     }
 }
+
+        
+        
+    
 
 
 # Password validation
